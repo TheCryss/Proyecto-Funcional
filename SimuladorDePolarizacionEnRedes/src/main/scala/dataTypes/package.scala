@@ -7,4 +7,9 @@ package object dataTypes {
   // si pi_k.lenght = k, 0 <= pi_k(i) <= 1, 0 <= i <= k-1
   // pi_k.sum == 1
   type Frequency = Vector[Double] //Valores entre 0 y 1
+
+  // Distribucion sobre Y
+  // Frequency:Pi
+  // DistributionValues: Y
+  type Distribution = (Frequency, DistributionValues)
 }
