@@ -12,4 +12,19 @@ package object dataTypes {
   // Frequency:Pi
   // DistributionValues: Y
   type Distribution = (Frequency, DistributionValues)
+
+  // b:SpecificBeliefConf
+  // 0 <= b(i) <= 1
+  // b(i) indica cuanto cree el agente i
+  // en la veracidad de la proposicion p
+  // b.length = numero de agentes
+  type SpecificBeliefConf = Vector[Double]
+
+  // gb:GenericBeliefConf
+  // gb(n) = b
+  type GenericBeliefConf = Int => SpecificBeliefConf
+
+  // d_k es una discretizacion de longitud k
+  // del intervalo [0,1]
+  type Discretizacion = Vector[Double]
 }
