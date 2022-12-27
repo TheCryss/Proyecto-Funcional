@@ -64,4 +64,14 @@ package object functions {
       b(i) + ( sumj_ai.sum / ai.length )
     }).toVector
   }
+
+  // 2.3.3. simulate
+  def simulate(fu:FunctionUpdate, swg:SpecificWeightedGraph,
+               b0:SpecificBeliefConf, t:Int):IndexedSeq[SpecificBeliefConf] = {
+    if (t == 0) IndexedSeq()
+    else {
+      val b1 = fu(b0, swg)
+      IndexedSeq(b0, b1).concat(simulate(fu, swg, b1, t-1))
+    }
+  }
 }
