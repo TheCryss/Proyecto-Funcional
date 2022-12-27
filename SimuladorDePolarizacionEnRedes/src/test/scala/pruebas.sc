@@ -18,10 +18,10 @@ rhoER((pi5,y))
 */
 
 //Pruebas funcion rho
-/*
+
 val d1 = Vector(0.2, 0.4, 0.6, 0.8)
 val d2 = Vector(0.1, 0.4, 0.7, 0.9)
-*/
+
 def b0(nags:Int):SpecificBeliefConf= {
   Vector.tabulate(nags)((i:Int) => {0.6})
 }
@@ -82,10 +82,16 @@ showWeightedGraph(i2_10)
 */
 
 // Pruebas funcion confBiasUpdate
-
+/*
 confBiasUpdate(b1_10, i1_10)
 confBiasUpdate(b1_10, i2_10)
 confBiasUpdate(b2_10, i1_10)
 confBiasUpdate(b2_10, i2_10)
 confBiasUpdate(b3_10, i1_10)
 confBiasUpdate(b3_10, i2_10)
+*/
+
+// Pruebas funcion simulate
+for {
+  b <- simulate(confBiasUpdate, i1_10, b1_10, 10)
+} yield (b, rho(d1, b))
