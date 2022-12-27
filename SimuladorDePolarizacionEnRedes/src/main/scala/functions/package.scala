@@ -39,4 +39,12 @@ package object functions {
 
     rhoER(pib, yb)
   }
+
+  // 2.3.1. showWeightedGraph
+  def showWeightedGraph(swg:SpecificWeightedGraph):IndexedSeq[IndexedSeq[Double]] = {
+    val nags = swg._2
+    val wg = swg._1
+    val ags = 0 until nags
+    for (i <- ags) yield for (j <- ags) yield wg(i, j)
+  }
 }
