@@ -39,4 +39,8 @@ package object dataTypes {
   // GenericWeightedGraph permite definir funciones de
   // influencia especificas de forma generica
   type GenericWeightedGraph = Int => SpecificWeightedGraph
+
+  // FunctionUpdate permite representar las diferentes funciones de
+  // actualización que se quieran usar.
+  type FunctionUpdate = (SpecificBeliefConf, SpecificWeightedGraph) => SpecificBeliefConf
 }
