@@ -27,4 +27,16 @@ package object dataTypes {
   // d_k es una discretizacion de longitud k
   // del intervalo [0,1]
   type Discretizacion = Vector[Double]
+
+  // WeightedGraph permite definir una funcion de influencia
+  type WeightedGraph = (Int, Int) => Double
+
+  // SpecificWeightedGraph permite tener una funcion de
+  // Influencia especifica acompañada con el numero de agentes
+  // medidos con esa creencia
+  type SpecificWeightedGraph = (WeightedGraph, Int)
+
+  // GenericWeightedGraph permite definir funciones de
+  // influencia especificas de forma generica
+  type GenericWeightedGraph = Int => SpecificWeightedGraph
 }
