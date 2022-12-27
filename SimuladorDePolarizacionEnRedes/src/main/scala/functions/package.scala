@@ -47,4 +47,21 @@ package object functions {
     val ags = 0 until nags
     for (i <- ags) yield for (j <- ags) yield wg(i, j)
   }
+
+  // 2.3.2. confBiasUpdate
+  def confBiasUpdate(b:SpecificBeliefConf, swg:SpecificWeightedGraph):SpecificBeliefConf = {
+    val nags = b.length
+    val ags = 0 until nags
+    val wg = swg._1
+    (for (i <- ags) yield {
+      val ai = for (j <- ags; if (wg(j, i) > 0)) yield j
+      val sumj_ai = for (j <- ai) yield {
+        val bij = 1.0 - (b(j)-b(i)).abs
+        val iji = wg(j ,i)
+        val bj_bi = b(j)-b(i)
+        bij * iji * bj_bi
+      }
+      b(i) + ( sumj_ai.sum / ai.length )
+    }).toVector
+  }
 }
