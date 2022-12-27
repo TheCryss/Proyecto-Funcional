@@ -21,7 +21,7 @@ rhoER((pi5,y))
 /*
 val d1 = Vector(0.2, 0.4, 0.6, 0.8)
 val d2 = Vector(0.1, 0.4, 0.7, 0.9)
-
+*/
 def b0(nags:Int):SpecificBeliefConf= {
   Vector.tabulate(nags)((i:Int) => {0.6})
 }
@@ -49,7 +49,7 @@ val b2_20 = b2(20)
 
 val b3_10= b3(10)
 val b3_20 = b3(20)
-
+/*
 rho(d1, b1_10)
 rho(d1, b2_10)
 rho(d2, b1_10)
@@ -59,7 +59,7 @@ rho(d2, b3_10)
  */
 
 //Pruebas funcion showWeightedGraph
-/*
+
 def i1(nags:Int):SpecificWeightedGraph = {
   ((i:Int, j:Int) => if (i==j) 1.0
   else if (i<j) 1.0/(j-i).toDouble
@@ -76,7 +76,16 @@ val i1_10 = i1(10)
 val i2_10 = i2(10)
 val i1_20 = i1(20)
 val i2_20 = i2(20)
-
+/*
 showWeightedGraph(i1_10)
 showWeightedGraph(i2_10)
 */
+
+// Pruebas funcion confBiasUpdate
+
+confBiasUpdate(b1_10, i1_10)
+confBiasUpdate(b1_10, i2_10)
+confBiasUpdate(b2_10, i1_10)
+confBiasUpdate(b2_10, i2_10)
+confBiasUpdate(b3_10, i1_10)
+confBiasUpdate(b3_10, i2_10)
