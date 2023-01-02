@@ -1,5 +1,7 @@
 import scala.collection.parallel.immutable._
+
 package object dataTypes {
+
   // Tipo para los valores, reales, de una distribucion
   // Contiene cualquier valor real
   type DistributionValues = Vector[Double]
