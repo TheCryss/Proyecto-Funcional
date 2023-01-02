@@ -31,10 +31,11 @@ package object functions {
         sb.count(s => (s >= li) && (s < ls)).toDouble / nags
       }
     }
-
+    // se concatena el primer intervalo que empiza en 0a
     val intervalos = Vector( (0:Double, d_k(0)) ).concat(generarIntervalos(d_k))
-
+    //Posibles decisiones que puede tomar la sociedad medida en intervalos
     val yb = for (i <- intervalos) yield (i._1 + i._2)/2
+    //Porcentaje de agentes dispuestos a tomar una decicio en cierto intervalo (posibilidad)
     val pib = generarPib(intervalos, sb)
 
     rhoER(pib, yb)
@@ -42,16 +43,16 @@ package object functions {
 
   // 2.3.1. showWeightedGraph
   def showWeightedGraph(swg:SpecificWeightedGraph):IndexedSeq[IndexedSeq[Double]] = {
-    val nags = swg._2
-    val wg = swg._1
+    val nags = swg._2 //# de agentes
+    val wg = swg._1 //weighted graph
     val ags = 0 until nags
     for (i <- ags) yield for (j <- ags) yield wg(i, j)
   }
 
   // 2.3.2. confBiasUpdate
   def confBiasUpdate(b:SpecificBeliefConf, swg:SpecificWeightedGraph):SpecificBeliefConf = {
-    val nags = b.length
-    val ags = 0 until nags
+    val nags = b.length //numero de agentes
+    val ags = 0 until nags //agentes creado como rango
     val wg = swg._1
     (for (i <- ags) yield {
       val ai = for (j <- ags; if (wg(j, i) > 0)) yield j

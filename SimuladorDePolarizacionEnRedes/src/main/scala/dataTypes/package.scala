@@ -1,3 +1,4 @@
+import scala.collection.parallel.immutable._
 package object dataTypes {
   // Tipo para los valores, reales, de una distribucion
   // Contiene cualquier valor real
@@ -43,4 +44,10 @@ package object dataTypes {
   // FunctionUpdate permite representar las diferentes funciones de
   // actualización que se quieran usar.
   type FunctionUpdate = (SpecificBeliefConf, SpecificWeightedGraph) => SpecificBeliefConf
+
+  //******************************* VERSION PARALELA *******************************//
+  type DistributionValuesPar = ParVector[ Double ]
+  type FrequencyPar = ParVector[Double]
+  type DistributionPar = (FrequencyPar, DistributionValuesPar)
+
 }

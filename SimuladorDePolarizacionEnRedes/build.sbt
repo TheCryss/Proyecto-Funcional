@@ -6,3 +6,4 @@ lazy val root = (project in file("."))
   .settings(
     name := "SimuladorDePolarizacionEnRedes"
   )
+  libraryDependencies ++=Seq("org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.3")
