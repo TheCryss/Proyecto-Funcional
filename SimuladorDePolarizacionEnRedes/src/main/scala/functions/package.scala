@@ -1,4 +1,5 @@
 import scala.collection.parallel.immutable._
+import scala.collection.parallel.CollectionConverters.ImmutableIterableIsParallelizable
 
 
 package object functions {
@@ -115,5 +116,28 @@ package object functions {
     val pib = generarPib(intervalos, sb)
 
     rhoERPar(pib,yb)
+  }
+
+  def showWeightedGraphPar(swg: SpecificWeightedGraph): IndexedSeq[IndexedSeq[Double]] = {
+    val nags = swg._2 //# de agentes
+    val wg = swg._1 //weighted graph
+    val ags = 0 until nags
+    ags.par.map(i => ags.map(j => wg(i, j))).toIndexedSeq
+  }
+
+  def confBiasUpdatePar(b: SpecificBeliefConf, swg: SpecificWeightedGraph): SpecificBeliefConf = {
+    val nags = b.length //numero de agentes
+    val ags = (0 until nags) //agentes creado como rango
+    val wg = swg._1
+    ags.par.map { i =>
+      val ai = for (j <- ags; if (wg(j, i) > 0)) yield j
+      val sumj_ai = for (j <- ai) yield {
+        val bij = 1.0 - (b(j) - b(i)).abs
+        val iji = wg(j, i)
+        val bj_bi = b(j) - b(i)
+        bij * iji * bj_bi
+      }
+      b(i) + (sumj_ai.sum / ai.length)
+    }.par.toVector
   }
 }

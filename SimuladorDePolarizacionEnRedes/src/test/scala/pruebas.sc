@@ -2,7 +2,7 @@ import functions._
 import dataTypes._
 import scala.collection.parallel.immutable._
 // Pruebas funcion rhoER
-/*
+
 val pi1 = Vector(0.4, 0.6)
 val pi1p = ParVector(0.4, 0.6)
 val pi2 = Vector(0.5, 0.5)
@@ -13,7 +13,7 @@ val pi5 = Vector(0.9, 0.1)
 
 val y = Vector(1.0, 5.0)
 val yp = ParVector(1.0, 5.0)
-
+/*
 rhoER((pi1,y))
 rhoERPar((pi1p,yp))
 rhoER((pi2,y))
@@ -22,8 +22,8 @@ rhoER((pi3,y))
 rhoER((pi4,y))
 rhoER((pi5,y))
 
- */
 
+*/
 
 //Pruebas funcion rho
 
@@ -57,7 +57,7 @@ val b2_20 = b2(20)
 
 val b3_10= b3(10)
 val b3_20 = b3(20)
-
+/*
 rho(d1, b1_10)
 rhoPar(d1,b1_10)
 rho(d1, b2_10)
@@ -66,11 +66,11 @@ rho(d2, b1_10)
 rho(d2, b2_10)
 rho(d1, b3_10)
 rho(d2, b3_10)
-
+*/
 
 
 //Pruebas funcion showWeightedGraph
-/*
+
 def i1(nags:Int):SpecificWeightedGraph = {
   ((i:Int, j:Int) => if (i==j) 1.0
   else if (i<j) 1.0/(j-i).toDouble
@@ -89,22 +89,29 @@ val i1_20 = i1(20)
 val i2_20 = i2(20)
 /*
 showWeightedGraph(i1_10)
+showWeightedGraphPar(i1_10)
 showWeightedGraph(i2_10)
+showWeightedGraphPar(i2_10)
 */
 
 // Pruebas funcion confBiasUpdate
-/*
+
 confBiasUpdate(b1_10, i1_10)
+confBiasUpdatePar(b1_10, i1_10)
 confBiasUpdate(b1_10, i2_10)
+confBiasUpdatePar(b1_10, i2_10)
 confBiasUpdate(b2_10, i1_10)
+confBiasUpdatePar(b2_10, i1_10)
 confBiasUpdate(b2_10, i2_10)
+confBiasUpdatePar(b2_10, i2_10)
 confBiasUpdate(b3_10, i1_10)
+confBiasUpdatePar(b3_10, i1_10)
 confBiasUpdate(b3_10, i2_10)
-*/
+confBiasUpdatePar(b3_10, i2_10)
+
+
 
 // Pruebas funcion simulate
 for {
   b <- simulate(confBiasUpdate, i1_10, b1_10, 10)
 } yield (b, rho(d1, b))
-
- */
